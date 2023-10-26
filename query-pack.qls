@@ -1,0 +1,4 @@
+- queries: '.'
+  from: codeql/javascript-queries
+- include:
+    kind: problem
