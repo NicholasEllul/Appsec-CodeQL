@@ -7,3 +7,4 @@ paths:
 paths-ignore:
   - ./codeql-cli
   - ./test
+  - ./data
