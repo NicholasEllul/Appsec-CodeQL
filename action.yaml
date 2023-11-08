@@ -11,17 +11,24 @@ inputs:
     required: true
     
 runs:
-  using: 'composite'
-  steps: 
-    - name: Generate Config
-      run: node scripts/generate-config.js
-      shell: bash 
-      env:
-        INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
-        INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
-    - name: Initialize CodeQL  
-      uses: github/codeql-action/init@v1
-      with:
-        config-file: ./.github/codeql-config.yml
-    - name: Run CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+  using: 'node20'
+  main: 'index.js'
+  env:
+    INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
+    INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
+  
+# runs:
+#   using: 'composite'
+#   steps: 
+#     - name: Generate Config
+#       run: node scripts/generate-config.js
+#       shell: bash 
+#       env:
+#         INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
+#         INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
+#     - name: Initialize CodeQL  
+#       uses: github/codeql-action/init@v1
+#       with:
+#         config-file: ./.github/codeql-config.yml
+#     - name: Run CodeQL Analysis
+#       uses: github/codeql-action/analyze@v1
