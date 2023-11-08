@@ -15,6 +15,7 @@ runs:
   steps: 
     - name: Generate Config
       run: node scripts/generate-config.js
+      shell: bash 
       env:
         INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
         INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
