@@ -1,4 +1,5 @@
 # action.yml
+# witmicko/Appsec-CodeQL@main
 name: 'witmicko AppSec CodeQL'
 description: 'Run witmicko custom CodeQL analysis'
 inputs:
