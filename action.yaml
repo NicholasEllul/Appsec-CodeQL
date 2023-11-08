@@ -12,7 +12,7 @@ inputs:
     
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: 'scripts/generate-config.js'
   env:
     INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
     INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
