@@ -3,10 +3,12 @@
 name: 'witmicko AppSec CodeQL'
 description: 'Run witmicko custom CodeQL analysis'
 inputs:
-  paths-ignored:  
-    description: 'Comma-separated list of paths to ignore'
+  paths-ignored:
+    description: 'Comma-separated list of paths to ignore in scan'
+    required: true
   rules-ignored:
-    description: 'Comma-separated list of rules to ignore'
+    description: 'Comma-separated list of rule IDs to ignore' 
+    required: true
     
 runs:
   using: 'composite'
