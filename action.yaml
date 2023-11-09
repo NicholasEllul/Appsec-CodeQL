@@ -30,7 +30,9 @@ runs:
     # - name: Install Dependencies
     #   run: npm i
     #   shell: bash 
-
+    - name: install deps
+      run: npm i --prod
+      shell: bash 
     - name: Generate Config
       run: node scripts/generate-config.js
       shell: bash 
