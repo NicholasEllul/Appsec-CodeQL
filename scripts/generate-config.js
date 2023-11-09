@@ -7,8 +7,8 @@ const template = fs.readFileSync('codeql-template.yml', 'utf8');
 
 
 
-console.log('>>>>>', process.env.INPUT_PATHS-IGNORED)
-console.log('>>>>>', process.env.INPUT_RULES-IGNORED)
+console.log('>>>>>', process.env.INPUT_PATHS_IGNORED);
+console.log('>>>>>', process.env.INPUT_RULES_IGNORED);
 const output = ejs.render(template, {
   pathsIgnored: process.env.INPUT_PATHS-IGNORED.split(','),
   rulesIgnored: process.env.INPUT_RULES-IGNORED.split(',')

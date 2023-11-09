@@ -37,8 +37,8 @@ runs:
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 
       env:
-        INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
-        INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
+        INPUT_PATHS_IGNORED: ${{ inputs.paths-ignored }}
+        INPUT_RULES_IGNORED: ${{ inputs.rules-ignored }}
     # - name: Initialize CodeQL  
     #   uses: github/codeql-action/init@v1
     #   with:
