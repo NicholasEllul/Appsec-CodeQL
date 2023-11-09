@@ -3,7 +3,7 @@
 const fs = require('fs');
 const ejs = require('ejs');
 
-const template = fs.readFileSync('codeql-template.yml', 'utf8');
+const template = fs.readFileSync('config/codeql-template.yml', 'utf8');
 
 
 

@@ -2,7 +2,9 @@
 name: "MetaMask CodeQL Config"
 
 paths-ignore:
-# {{ pathsIgnored }}
+<% pathsIgnored.forEach(function(path) { -%>
+  - <%= path %>
+<% }); -%>
 
 queries:
   - name: "<TBD>"
@@ -11,4 +13,6 @@ queries:
 disable-default-queries: true 
 
 queries:
-# {{ rulesIgnored }}
+<% rulesIgnored.forEach(function(query) { -%>
+  - <%= query %>
+<% }); -%>
