@@ -3,10 +3,10 @@
 name: 'witmicko AppSec CodeQL'
 description: 'Run witmicko custom CodeQL analysis'
 inputs:
-  paths-ignored:
+  paths_ignored:
     description: 'Comma-separated list of paths to ignore in scan'
     required: true
-  rules-ignored:
+  rules_ignored:
     description: 'Comma-separated list of rule IDs to ignore' 
     required: true
     
@@ -37,8 +37,8 @@ runs:
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 
       env:
-        INPUT_PATHS_IGNORED: ${{ inputs.paths-ignored }}
-        INPUT_RULES_IGNORED: ${{ inputs.rules-ignored }}
+        INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
+        INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
     # - name: Initialize CodeQL  
     #   uses: github/codeql-action/init@v1
     #   with:
