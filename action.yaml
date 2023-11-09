@@ -12,14 +12,21 @@ inputs:
     
 runs:
   using: 'composite'
-  steps: 
-    - uses: actions/setup-node@v3.6.0
-      with:
-        node-version: 16
+  steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v3
 
-    - name: Install Dependencies
-      run: npm i
-      shell: bash 
+    # - name: Now Calling the Node action in directory ./actions/node-action
+    #   uses: ./actions/node-action
+    #   with:
+    #     input1: ${{ inputs.input1 }} 
+    # - uses: actions/setup-node@v3.6.0
+    #   with:
+    #     node-version: 16
+
+    # - name: Install Dependencies
+    #   run: npm i
+    #   shell: bash 
 
     - name: Generate Config
       run: node scripts/generate-config.js
@@ -27,9 +34,9 @@ runs:
       env:
         INPUT_PATHS-IGNORED: ${{ inputs.paths-ignored }}
         INPUT_RULES-IGNORED: ${{ inputs.rules-ignored }}
-    - name: Initialize CodeQL  
-      uses: github/codeql-action/init@v1
-      with:
-        config-file: ./.github/codeql-config.yml
-    - name: Run CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+    # - name: Initialize CodeQL  
+    #   uses: github/codeql-action/init@v1
+    #   with:
+    #     config-file: ./.github/codeql-config.yml
+    # - name: Run CodeQL Analysis
+    #   uses: github/codeql-action/analyze@v1
