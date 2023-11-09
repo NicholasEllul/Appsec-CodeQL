@@ -19,10 +19,12 @@ runs:
 
     - name: Install npm 7
       run: npm i -g npm@7
+      shell: bash 
 
     - name: Install Dependencies
       run: npm ci
-      
+      shell: bash 
+
     - name: Generate Config
       run: node scripts/generate-config.js
       shell: bash 
