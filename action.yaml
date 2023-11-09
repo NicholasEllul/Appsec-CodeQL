@@ -16,7 +16,7 @@ runs:
     - name: Check out Git repository
       uses: actions/checkout@v3
       with:
-          repository: 'witmicko/Appsec-CodeQL@main'
+          repository: 'witmicko/Appsec-CodeQL'
 
 
     # - name: Now Calling the Node action in directory ./actions/node-action
