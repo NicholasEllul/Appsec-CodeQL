@@ -1,0 +1,14 @@
+# codeql-template.yml
+name: "MetaMask CodeQL Config"
+
+paths-ignore:
+# {{ pathsIgnored }}
+
+queries:
+  - name: "<TBD>"
+    uses: <TBD>.qls
+
+disable-default-queries: true 
+
+queries:
+# {{ rulesIgnored }}
