@@ -17,22 +17,14 @@ runs:
       uses: actions/checkout@v3
       with:
           repository: 'witmicko/Appsec-CodeQL'
-
-
-    # - name: Now Calling the Node action in directory ./actions/node-action
-    #   uses: ./actions/node-action
-    #   with:
-    #     input1: ${{ inputs.input1 }} 
-    # - uses: actions/setup-node@v3.6.0
-    #   with:
-    #     node-version: 16
-
-    # - name: Install Dependencies
-    #   run: npm i
-    #   shell: bash 
-    # - name: install deps
-    #   run: npm i --prod
-    #   shell: bash 
+    - name: Echo the input paths_ignored
+      shell: bash
+      env:
+        INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
+        INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
+      run: |
+        echo "The input $INPUT_PATHS_IGNORED"
+        echo "The input is: $INPUT_RULES_IGNORED"
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 

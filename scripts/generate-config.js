@@ -13,5 +13,5 @@ const output = ejs.render(template, {
   pathsIgnored: process.env.INPUT_PATHS_IGNORED.split(','),
   rulesIgnored: process.env.INPUT_RULES_IGNORED.split(',')
 });
-
+console.log(output);
 fs.writeFileSync('.github/codeql-config.yml', output);
