@@ -31,9 +31,9 @@ runs:
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
-    # - name: Initialize CodeQL  
-    #   uses: github/codeql-action/init@v1
-    #   with:
-    #     config-file: ./.github/codeql-config.yml
-    # - name: Run CodeQL Analysis
-    #   uses: github/codeql-action/analyze@v1
+    - name: Initialize CodeQL  
+      uses: github/codeql-action/init@v1
+      with:
+        config-file: ./.github/codeql-config.yml
+    - name: Run CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
