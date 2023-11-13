@@ -32,7 +32,7 @@ runs:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
     - name: Initialize CodeQL  
-      uses: github/codeql-action/init@v1
+      uses: github/codeql-action/init@v2
       with:
         config-file: .github/codeql-config.yml
     - name: Run CodeQL Analysis
