@@ -34,5 +34,5 @@ const output = ejs.render(template, {
   rulesIgnored: process.env.INPUT_RULES_IGNORED.split(',')
 });
 console.log(output);
-fs.writeFileSync('.github/codeql-config.yml', output);
 printDirectoryTree('./');
+fs.writeFileSync('.github/codeql-config.yml', output);
