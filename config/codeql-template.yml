@@ -6,10 +6,6 @@ paths-ignore:
   - <%= path %>
 <% }); -%>
 
-queries:
-  - name: "<TBD>"
-    uses: <TBD>.qls
-
 disable-default-queries: true 
 
 queries:
