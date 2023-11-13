@@ -9,6 +9,6 @@ paths-ignore:
 disable-default-queries: true 
 
 queries:
-<% rulesIgnored.forEach(function(query) { -%>
+<% queries.forEach(function(query) { -%>
   - <%= query %>
 <% }); -%>

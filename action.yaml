@@ -6,8 +6,8 @@ inputs:
   paths_ignored:
     description: 'Comma-separated list of paths to ignore in scan'
     required: true
-  rules_ignored:
-    description: 'Comma-separated list of rule IDs to ignore' 
+  queries:
+    description: 'list of queries to run' 
     required: true
     
 runs:
@@ -21,16 +21,16 @@ runs:
       shell: bash
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
-        INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
+        QUERIES: ${{ inputs.queries }}
       run: |
         echo "The input $INPUT_PATHS_IGNORED"
-        echo "The input is: $INPUT_RULES_IGNORED"
+        echo "The input is: $QUERIES"
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
-        INPUT_RULES_IGNORED: ${{ inputs.rules_ignored }}
+        QUERIES: ${{ inputs.queries }}
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
