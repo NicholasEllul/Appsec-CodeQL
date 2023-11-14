@@ -6,8 +6,6 @@ paths-ignore:
   - <%= path %>
 <% }); -%>
 
-disable-default-queries: true 
-
 queries:
 <% queries.forEach(function(query) { -%>
   - name: <%= query.name %>
