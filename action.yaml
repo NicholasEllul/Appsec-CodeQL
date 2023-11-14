@@ -9,6 +9,9 @@ inputs:
   queries:
     description: 'Appsec qls packs to run' 
     required: true
+  languages: 
+    description: 'Languages to scan, an array' 
+    required: true
     
 runs:
   using: 'composite'
@@ -35,6 +38,6 @@ runs:
       uses: github/codeql-action/init@v2
       with:
         config-file: .github/codeql-config.yml
-        languages: javascript-typescript
+        languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       uses: github/codeql-action/analyze@v2
