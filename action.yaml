@@ -20,14 +20,6 @@ runs:
       uses: actions/checkout@v3
       with:
           repository: 'witmicko/Appsec-CodeQL'
-    - name: Echo the input paths_ignored
-      shell: bash
-      env:
-        INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
-        QUERIES: ${{ inputs.queries }}
-      run: |
-        echo "The input $INPUT_PATHS_IGNORED"
-        echo "The input is: $QUERIES"
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 

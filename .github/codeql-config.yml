@@ -1,12 +1,1 @@
-# codeql-template.yml
-name: "MetaMask CodeQL Config"
 
-
-paths-ignore:
-  - node_modules
-  - test
-  - dist
-
-queries:
-  - name: Juiceshop qls pack
-  - uses: qls-packs/juiceshop.qls
