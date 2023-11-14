@@ -1,14 +1,6 @@
 # codeql-template.yml
 name: "MetaMask CodeQL Config"
 
-
-strategy:
-  fail-fast: false
-  matrix:
-    # Override automatic language detection by changing the list below.
-    # Supported options are listed in a comment in the default workflow.
-    language: ['javascript-typescript']
-    
 paths-ignore:
 <% pathsIgnored.forEach(function(path) { -%>
   - <%= path %>
