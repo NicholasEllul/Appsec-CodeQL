@@ -2,8 +2,3 @@
   from: codeql/javascript-queries
 - include:
     kind: problem
-
-- queries: '.'
-  from: codeql/python-queries
-- include:
-    kind: problem
