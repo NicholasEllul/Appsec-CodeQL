@@ -7,7 +7,7 @@ inputs:
     description: 'Comma-separated list of paths to ignore in scan'
     required: true
   queries:
-    description: 'list of queries to run' 
+    description: 'Appsec qls packs to run' 
     required: true
     
 runs:
