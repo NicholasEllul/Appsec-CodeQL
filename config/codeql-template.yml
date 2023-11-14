@@ -10,5 +10,6 @@ disable-default-queries: true
 
 queries:
 <% queries.forEach(function(query) { -%>
-  - <%= query %>
+  - name: <%= query.name %>
+  - uses: <%= query.uses %>
 <% }); -%>

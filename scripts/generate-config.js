@@ -7,10 +7,9 @@ const ejs = require('ejs');
 
 const template = fs.readFileSync('config/codeql-template.yml', 'utf8');
 
-
 const output = ejs.render(template, {
   pathsIgnored: process.env.INPUT_PATHS_IGNORED.split(','),
-  queries: process.env.QUERIES.split(',')
+  queries: JSON.parse(process.env.QUERIES)
 });
 console.log(output);
 fs.writeFileSync('.github/codeql-config.yml', output);

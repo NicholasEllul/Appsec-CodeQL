@@ -14,7 +14,7 @@
       "env": {
         "NODE_ENV": "development",
         "INPUT_PATHS_IGNORED": "node_modules,test,dist",
-        "INPUT_RULES_IGNORED": "somerule,otherrule,third"
+        "QUERIES": "somerule,otherrule,third"
       },
       "type": "node"
     }
