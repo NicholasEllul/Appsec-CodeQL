@@ -1,5 +1,6 @@
 # codeql-template.yml
 name: "MetaMask CodeQL Config"
+languages: javascript-typescript
 
 paths-ignore:
   - node_modules
