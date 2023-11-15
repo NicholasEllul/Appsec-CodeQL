@@ -7,7 +7,4 @@ paths-ignore:
 <% }); -%>
 
 queries:
-<% queries.forEach(function(query) { -%>
-  - name: <%= query.name %>
-    uses: <%= query.uses %>
-<% }); -%>
+- path: javascript/ql
