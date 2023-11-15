@@ -12,6 +12,9 @@ inputs:
   languages: 
     description: 'Languages to scan, an array' 
     required: true
+  repo:
+    description: 'Repository that requested the scan' 
+    required: true
     
 runs:
   using: 'composite'
@@ -26,6 +29,7 @@ runs:
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         QUERIES: ${{ inputs.queries }}
+        REPO: ${{inputs.repo}}
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
