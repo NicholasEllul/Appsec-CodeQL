@@ -25,7 +25,7 @@ runs:
   steps:
   
     - name: List where user is
-      run: pwd && echo ${{APPSEC_CODEQL_DIR}}
+      run: pwd && echo ${{env.APPSEC_CODEQL_DIR}}
       shell: bash 
 
     - name: List dirs
