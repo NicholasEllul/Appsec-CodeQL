@@ -46,27 +46,25 @@ runs:
         ls
         npm i --prod
         node scripts/generate-config.js
+        mv ./codeql-config.yaml $GITHUB_WORKSPACE
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
         QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "./qls-packs/juiceshop.qls"}]'
-        
-    - name: Move generated CodeQL Config to the repo we scan
-      # $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}/.github/codeql-config.yml => home/appsec-codeql/.github/codeql-config.yml 
-      run: cd $GITHUB_WORKSPACE/${{ inputs.repo }} && mv $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}/.github/codeql-config.yml ./
-      shell: bash 
       
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
         config-file: ./codeql-config.yml
         languages: ${{ inputs.languages }}
+        source-root: ${{ inputs.repo }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
       uses: github/codeql-action/analyze@v2
       with:
         upload: false
+        checkout-path: ${{ github.workspace }}/${{ inputs.repo }}
     - name: Check outputs
       shell: bash
       run: |
