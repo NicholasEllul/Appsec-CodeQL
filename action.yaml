@@ -23,6 +23,15 @@ runs:
   using: 'composite'
  
   steps:
+  
+      - name: List where user is
+      run: pwd
+      shell: bash 
+
+    - name: List dirs
+      run: ls -lia
+      shell: bash 
+      
     - name: Check out Git repository
       uses: actions/checkout@v4
       with:
@@ -34,8 +43,9 @@ runs:
       shell: bash 
 
     - name: List dirs
-      run: ls -lia
+      run: ls -lia && cd .. && ls -lia && cd .. && ls -lia
       shell: bash 
+
       
     - name: Enter appsec codeql directory
       run: cd ${{ env.APPSEC_CODEQL_DIR }}
