@@ -36,7 +36,6 @@ runs:
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
-        QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "qls-packs/juiceshop.qls"}]'
 
     - name: List where user is
       run: pwd
