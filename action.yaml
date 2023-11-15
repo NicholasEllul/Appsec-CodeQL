@@ -25,6 +25,7 @@ runs:
   steps:
     - name: List ENV
       run: env
+      shell: bash 
 
     - name: List where user is
       run: pwd
