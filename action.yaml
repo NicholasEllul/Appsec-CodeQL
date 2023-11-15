@@ -35,6 +35,6 @@ runs:
       uses: github/codeql-action/init@v2
       with:
         config-file: .github/codeql-config.yml
-        languages: 'javascript-typescript', 'typescript'
+        languages: javascript-typescript, typescript
     - name: Run CodeQL Analysis
       uses: github/codeql-action/analyze@v2
