@@ -46,6 +46,10 @@ runs:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
         QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "./qls-packs/juiceshop.qls"}]'
+
+    - name: Print CodeQL Config
+      run: cat ${{ github.workspace }}/appsec-codeql/codeql-config.yml
+      shell: bash
       
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
