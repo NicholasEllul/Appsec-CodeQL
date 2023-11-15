@@ -21,8 +21,8 @@ console.log(`>>>>>`, inputs.repo);
 // const q = {...JSON.parse(process.env.QUERIES) || {}, ...loadConfig(reponame)}
 
 const output = ejs.render(template, {
-  pathsIgnored,
-  queries
+  pathsIgnored: inputs.pathsIgnored,
+  queries: inputs.queries
 });
 console.log(output);
 fs.writeFileSync('.github/codeql-config.yml', output);
