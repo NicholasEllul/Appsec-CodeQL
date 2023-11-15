@@ -38,3 +38,18 @@ runs:
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+        with:
+          upload: false
+          output: ./codeql-output
+    - name: Echo SARIF
+      shell: bash
+      env:
+        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
+      run: |
+        cat $sarif_file
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
+        category: my-analysis-tool
