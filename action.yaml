@@ -42,6 +42,7 @@ runs:
         upload: false
         output: './results'
     - name: Check outputs
+      shell: bash
       run: |
         echo "DB Locations: ${{ steps.run-codeql-analysis.outputs.db-locations }}"
         echo "SARIF Output: ${{ steps.run-codeql-analysis.outputs.sarif-output }}"
