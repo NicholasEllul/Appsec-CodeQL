@@ -41,7 +41,6 @@ runs:
       uses: github/codeql-action/analyze@v2
       with:
         upload: false
-        output: './results'
     - name: Check outputs
       shell: bash
       run: |
@@ -53,9 +52,10 @@ runs:
       env:
         sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
       run: |
-        ls
-        ls ./results
-        cat $sarif_file
+        ls $sarif_file
+        cd $sarif_file
+        find . -maxdepth 1 -type f -exec cat {} +
+
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
