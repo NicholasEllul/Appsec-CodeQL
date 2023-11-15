@@ -15,10 +15,11 @@ inputs:
   repo:
     description: 'Repository that requested the scan' 
     required: true
-
-env:
-  APPSEC_CODEQL_DIR: appsec-codeql
-
+  path_on_runner: 
+    description: 'Path that the Appsec CodeQL repository gets checked into on the aciton runner'
+    required: false
+    default: 'appsec-codeql'
+    
 runs:
   using: 'composite'
   steps:
@@ -38,7 +39,7 @@ runs:
       uses: actions/checkout@v4
       with:
           repository: 'NicholasEllul/Appsec-CodeQL'
-          path: ${{ env.APPSEC_CODEQL_DIR }}
+          path: ${{ inputs.path_on_runner }}
 
     - name: List where user is
       run: pwd
@@ -50,7 +51,7 @@ runs:
 
       
     - name: Enter appsec codeql directory
-      run: cd ${{ env.APPSEC_CODEQL_DIR }}
+      run: cd ${{ env.inputs.path_on_runner }}
       shell: bash 
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js 
@@ -66,7 +67,7 @@ runs:
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
-        config-file: cd ${{ env.APPSEC_CODEQL_DIR }}/.github/codeql-config.yml
+        config-file: cd ${{ env.inputs.path_on_runner }}/.github/codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
