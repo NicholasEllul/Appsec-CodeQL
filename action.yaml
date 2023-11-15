@@ -40,6 +40,7 @@ runs:
       uses: github/codeql-action/analyze@v2
       with:
         upload: false
+        output: './results'
     - name: Echo SARIF
       shell: bash
       env:
