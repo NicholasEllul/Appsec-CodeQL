@@ -15,12 +15,11 @@ inputs:
   repo:
     description: 'Repository that requested the scan' 
     required: true
-
-env:
-  APPSEC_CODEQL_DIR: appsec-codeql
-
 runs:
   using: 'composite'
+  env:
+    APPSEC_CODEQL_DIR: appsec-codeql
+
  
   steps:
     - name: List ENV
