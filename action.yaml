@@ -38,8 +38,8 @@ runs:
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       uses: github/codeql-action/analyze@v2
-        with:
-          upload: false
+      with:
+        upload: false
     - name: Echo SARIF
       shell: bash
       env:
