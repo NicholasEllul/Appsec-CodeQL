@@ -12,7 +12,7 @@ inputs:
   repo:
     description: 'Repository that requested the scan' 
     required: true
-  path_on_runner: 
+  appsec-codeql-checkout-path: 
     description: 'Path that the Appsec CodeQL repository gets checked into on the action runner'
     required: false
     default: 'appsec-codeql'
@@ -27,35 +27,40 @@ runs:
     - name: Check out Git repository
       uses: actions/checkout@v4
       with:
-          path: ${{ inputs.path_on_runner }}
+          path: ${{ inputs.appsec-codeql-checkout-path }}
 
     - name: List where user is
       run: pwd
       shell: bash 
 
     - name: List dirs
-      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd $GITHUB_WORKSPACE && PWD
+      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd $GITHUB_WORKSPACE && pwd
       shell: bash 
 
       
     - name: Enter appsec codeql directory
-      run: cd ${{ env.inputs.path_on_runner }}
+      run: cd $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}
       shell: bash 
     - name: Generate Config
-      run: npm i --prod && node scripts/generate-config.js 
+        run: |
+          cd $GITHUB_WORKSPACE/${{ env.inputs.appsec-codeql-checkout-path }}
+          npm i --prod
+          node scripts/generate-config.js
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
         QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "./qls-packs/juiceshop.qls"}]'
-    - name: Leave appsec codeql directory
-      run: cd ..
+        
+    - name: Move generated CodeQL Config to the repo we scan
+      # $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}/.github/codeql-config.yml => home/appsec-codeql/.github/codeql-config.yml 
+      run: cd $GITHUB_WORKSPACE/${{ inputs.repo }} && mv $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}/.github/codeql-config.yml ./
       shell: bash 
       
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
-        config-file: cd ${{ env.inputs.path_on_runner }}/.github/codeql-config.yml
+        config-file: ./codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
