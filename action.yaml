@@ -8,7 +8,7 @@ inputs:
     required: true
   queries:
     description: 'Appsec qls packs to run' 
-    required: true
+    required: false
   languages: 
     description: 'Languages to scan, an array' 
     required: true
@@ -58,7 +58,6 @@ runs:
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
-        QUERIES: ${{ inputs.queries }}
         REPO: ${{inputs.repo}}
     - name: Leave appsec codeql directory
       run: cd ..
