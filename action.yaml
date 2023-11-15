@@ -20,6 +20,11 @@ runs:
   using: 'composite'
  
   steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v4
+      with:
+          repository: 'NicholasEllul/Appsec-CodeQL'
+          path: appsec-codeql
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 
