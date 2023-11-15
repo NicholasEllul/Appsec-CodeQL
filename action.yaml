@@ -46,7 +46,7 @@ runs:
         ls
         npm i --prod
         node scripts/generate-config.js
-        mv ./codeql-config.yaml $GITHUB_WORKSPACE
+        mv ./codeql-config.yml $GITHUB_WORKSPACE
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
