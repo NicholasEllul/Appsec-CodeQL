@@ -42,10 +42,7 @@ runs:
       run: cd $GITHUB_WORKSPACE/${{ inputs.appsec-codeql-checkout-path }}
       shell: bash 
     - name: Generate Config
-        run: >
-          cd $GITHUB_WORKSPACE/${{ env.inputs.appsec-codeql-checkout-path }} &&
-          npm i --prod && 
-          node scripts/generate-config.js
+        run: cd $GITHUB_WORKSPACE/${{ env.inputs.appsec-codeql-checkout-path }} && npm i --prod && node scripts/generate-config.js
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
