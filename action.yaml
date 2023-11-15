@@ -15,7 +15,10 @@ inputs:
   repo:
     description: 'Repository that requested the scan' 
     required: true
-    
+
+env:
+  APPSEC_CODEQL_DIR: 'appsec-codeql'
+
 runs:
   using: 'composite'
  
@@ -24,12 +27,12 @@ runs:
       uses: actions/checkout@v4
       with:
           repository: 'NicholasEllul/Appsec-CodeQL'
-          path: appsec-codeql
+          path: ${{ env.APPSEC_CODEQL_DIR }}
     - name: List directories here
       run: ls && echo "----------"
       shell: bash 
     - name: Generate Config
-      run: cd appsec-codeql && npm i --prod && node scripts/generate-config.js && cd ..
+      run: cd ${{ env.APPSEC_CODEQL_DIR }} && npm i --prod && node scripts/generate-config.js && cd ..
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
@@ -38,7 +41,7 @@ runs:
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
-        config-file: appsec-codeql/.github/codeql-config.yml
+        config-file:  ${{ env.APPSEC_CODEQL_DIR }}/.github/codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
