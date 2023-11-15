@@ -45,6 +45,7 @@ runs:
       env:
         sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
       run: |
+        ls
         cat $sarif_file
 
     - name: Upload SARIF file
