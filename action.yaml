@@ -13,7 +13,7 @@ inputs:
     description: 'Repository that requested the scan' 
     required: true
   path_on_runner: 
-    description: 'Path that the Appsec CodeQL repository gets checked into on the aciton runner'
+    description: 'Path that the Appsec CodeQL repository gets checked into on the action runner'
     required: false
     default: 'appsec-codeql'
     
@@ -34,7 +34,7 @@ runs:
       shell: bash 
 
     - name: List dirs
-      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd ${{ GITHUB_WORKSPACE }} && PWD
+      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd $GITHUB_WORKSPACE && PWD
       shell: bash 
 
       
