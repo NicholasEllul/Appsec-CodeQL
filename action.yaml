@@ -24,7 +24,7 @@ runs:
  
   steps:
   
-      - name: List where user is
+    - name: List where user is
       run: pwd
       shell: bash 
 
