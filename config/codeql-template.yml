@@ -6,5 +6,5 @@ paths-ignore:
   - <%= path %>
 <% }); -%>
 
-queries:
-- path: javascript/ql
+packs:
+  - codeql/javascipt-queries
