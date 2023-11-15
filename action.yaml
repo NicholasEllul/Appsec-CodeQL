@@ -34,7 +34,7 @@ runs:
       shell: bash 
 
     - name: List dirs
-      run: ls -lia && cd .. && ls -lia && cd .. && ls -lia
+      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd ${{ GITHUB_WORKSPACE }} && PWD
       shell: bash 
 
       
