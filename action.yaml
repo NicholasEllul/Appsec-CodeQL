@@ -22,8 +22,8 @@ runs:
   steps:
     - name: Check out Git repository
       uses: actions/checkout@v3
-      with:
-          repository: 'witmicko/Appsec-CodeQL'
+      # with:
+      #     repository: 'witmicko/Appsec-CodeQL'
     - name: Generate Config
       run: npm i --prod && node scripts/generate-config.js
       shell: bash 
