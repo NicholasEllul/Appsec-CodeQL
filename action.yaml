@@ -41,16 +41,22 @@ runs:
       with:
         upload: false
         output: './results'
+    - name: Check outputs
+      run: |
+        echo "DB Locations: ${{ steps.run-codeql-analysis.outputs.db-locations }}"
+        echo "SARIF Output: ${{ steps.run-codeql-analysis.outputs.sarif-output }}"
+        echo "SARIF ID: ${{ steps.run-codeql-analysis.outputs.sarif-id }}"
     - name: Echo SARIF
       shell: bash
       env:
-        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
+        sarif_file: ${{ steps.run-codeql-analysis.outputs.sarif-output }}
       run: |
         ls
+        ls ./results
         cat $sarif_file
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
-        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
+        sarif_file: ${{ steps.run-codeql-analysis.outputs.sarif-output }}
         category: my-analysis-tool
