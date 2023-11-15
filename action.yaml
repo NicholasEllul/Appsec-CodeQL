@@ -6,9 +6,6 @@ inputs:
   paths_ignored:
     description: 'Comma-separated list of paths to ignore in scan'
     required: true
-  queries:
-    description: 'Appsec qls packs to run' 
-    required: false
   languages: 
     description: 'Languages to scan, an array' 
     required: true
