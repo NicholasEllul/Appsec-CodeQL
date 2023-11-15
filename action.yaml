@@ -16,10 +16,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: List ENV
-      run: env
-      shell: bash 
-      
     - name: Check out Git repository
       uses: actions/checkout@v4
       with:
@@ -36,16 +32,9 @@ runs:
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
+        # Does not currenlty work
         QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "./qls-packs/juiceshop.qls"}]'
 
-    - name: List where user is
-      run: pwd
-      shell: bash 
-
-    - name: List dirs
-      run: cd ${{ github.workspace }}/appsec-codeql && ls -lia && cd qls-packs && ls
-      shell: bash 
-    
     - name: Print CodeQL Config
       run: cat ${{ github.workspace }}/appsec-codeql/codeql-config.yml
       shell: bash
@@ -56,12 +45,14 @@ runs:
         config-file: ${{ github.workspace }}/appsec-codeql/codeql-config.yml
         languages: ${{ inputs.languages }}
         source-root: ${{ inputs.repo }}
+
     - name: Run CodeQL Analysis
       id: codeql-analysis
       uses: github/codeql-action/analyze@v2
       with:
         upload: false
         checkout-path: ${{ github.workspace }}/${{ inputs.repo }}
+
     - name: Check outputs
       shell: bash
       run: |
