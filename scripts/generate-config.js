@@ -12,7 +12,8 @@ const inputs = {
   queries: JSON.parse(process.env.QUERIES),
   repo: process.env.REPO,
 };
-console.log(`>>>>>`, inputs.repo);
+console.log(`>>>>>`, JSON.stringify(inputs, null, 2));
+
 // const loadConfig = (repo) => {
 //   return fs.readFileSync('./qls-packs' + repo + '.qls');
 // };
