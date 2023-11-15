@@ -23,19 +23,10 @@ runs:
     - name: List ENV
       run: env
       shell: bash 
-
-    - name: List where user is
-      run: pwd
-      shell: bash 
-
-    - name: List dirs
-      run: ls -lia
-      shell: bash 
       
     - name: Check out Git repository
       uses: actions/checkout@v4
       with:
-          repository: 'NicholasEllul/Appsec-CodeQL'
           path: ${{ inputs.path_on_runner }}
 
     - name: List where user is
