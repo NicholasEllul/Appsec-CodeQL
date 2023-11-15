@@ -28,20 +28,25 @@ runs:
       with:
           repository: 'NicholasEllul/Appsec-CodeQL'
           path: ${{ env.APPSEC_CODEQL_DIR }}
-    - name: List directories here
-      run: ls && echo "----------"
+          
+    - name: Enter appsec codeql directory
+      run: cd ${{ env.APPSEC_CODEQL_DIR }}
       shell: bash 
     - name: Generate Config
-      run: cd ${{ env.APPSEC_CODEQL_DIR }} && npm i --prod && node scripts/generate-config.js && cd ..
+      run: npm i --prod && node scripts/generate-config.js 
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         QUERIES: ${{ inputs.queries }}
         REPO: ${{inputs.repo}}
+    - name: Leave appsec codeql directory
+      run: cd ..
+      shell: bash 
+      
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
-        config-file:  ${{ env.APPSEC_CODEQL_DIR }}/.github/codeql-config.yml
+        config-file: cd ${{ env.APPSEC_CODEQL_DIR }}/.github/codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
@@ -68,4 +73,4 @@ runs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
-        category: my-analysis-tool
+        category: metamask-codeql
