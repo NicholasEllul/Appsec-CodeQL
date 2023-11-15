@@ -27,6 +27,7 @@ runs:
     - name: Check out Git repository
       uses: actions/checkout@v4
       with:
+          repository: NicholasEllul/Appsec-CodeQL
           path: ${{ inputs.appsec-codeql-checkout-path }}
 
     - name: List where user is
