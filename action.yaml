@@ -17,15 +17,17 @@ inputs:
     required: true
 
 env:
-  APPSEC_CODEQL_DIR: 'appsec-codeql'
+  APPSEC_CODEQL_DIR: appsec-codeql
 
 runs:
   using: 'composite'
  
   steps:
-  
+    - name: List ENV
+      run: env
+
     - name: List where user is
-      run: pwd && echo ${{env.APPSEC_CODEQL_DIR}}
+      run: pwd
       shell: bash 
 
     - name: List dirs
