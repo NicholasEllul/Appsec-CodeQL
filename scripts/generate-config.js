@@ -27,3 +27,4 @@ const output = ejs.render(template, {
 });
 console.log(output);
 fs.writeFileSync('.github/codeql-config.yml', output);
+fs.writeFileSync('codeql-config.yml', output);
