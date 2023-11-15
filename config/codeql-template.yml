@@ -5,6 +5,3 @@ paths-ignore:
 <% pathsIgnored.forEach(function(path) { -%>
   - <%= path %>
 <% }); -%>
-
-packs:
-  - codeql/javascipt-queries
