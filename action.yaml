@@ -27,15 +27,6 @@ runs:
           # TODO make this a constant
           path: appsec-codeql
 
-    - name: List where user is
-      run: pwd
-      shell: bash 
-
-    - name: List dirs
-      run: ls -lia && cd ${{ inputs.repo }} && ls -lia && pwd && cd $GITHUB_WORKSPACE && pwd
-      shell: bash 
-
-    
     - name: Generate Config
       run: | 
         cd $GITHUB_WORKSPACE/appsec-codeql
@@ -47,6 +38,15 @@ runs:
         REPO: ${{inputs.repo}}
         QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "${{ github.workspace }}/appsec-codeql/qls-packs/juiceshop.qls"}]'
 
+    - name: List where user is
+      run: pwd
+      shell: bash 
+
+    - name: List dirs
+      run: cd ${{ github.workspace }}/appsec-codeql && ls -lia && cd qls-packs && ls
+      shell: bash 
+
+    
     - name: Print CodeQL Config
       run: cat ${{ github.workspace }}/appsec-codeql/codeql-config.yml
       shell: bash
