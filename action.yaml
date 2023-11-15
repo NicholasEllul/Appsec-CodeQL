@@ -25,8 +25,11 @@ runs:
       with:
           repository: 'NicholasEllul/Appsec-CodeQL'
           path: appsec-codeql
+    - name: List directories here
+      run: ls && echo "----------"
+      shell: bash 
     - name: Generate Config
-      run: npm i --prod && node scripts/generate-config.js
+      run: cd appsec-codeql && npm i --prod && node scripts/generate-config.js && cd ..
       shell: bash 
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
@@ -35,7 +38,7 @@ runs:
     - name: Initialize CodeQL  
       uses: github/codeql-action/init@v2
       with:
-        config-file: .github/codeql-config.yml
+        config-file: appsec-codeql/.github/codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
       id: codeql-analysis
