@@ -37,6 +37,7 @@ runs:
         config-file: .github/codeql-config.yml
         languages: ${{ inputs.languages }}
     - name: Run CodeQL Analysis
+      id: codeql-analysis
       uses: github/codeql-action/analyze@v2
       with:
         upload: false
@@ -44,13 +45,13 @@ runs:
     - name: Check outputs
       shell: bash
       run: |
-        echo "DB Locations: ${{ steps.run-codeql-analysis.outputs.db-locations }}"
-        echo "SARIF Output: ${{ steps.run-codeql-analysis.outputs.sarif-output }}"
-        echo "SARIF ID: ${{ steps.run-codeql-analysis.outputs.sarif-id }}"
+        echo "DB Locations: ${{ steps.codeql-analysis.outputs.db-locations }}"
+        echo "SARIF Output: ${{ steps.codeql-analysis.outputs.sarif-output }}"
+        echo "SARIF ID: ${{ steps.codeql-analysis.outputs.sarif-id }}"
     - name: Echo SARIF
       shell: bash
       env:
-        sarif_file: ${{ steps.run-codeql-analysis.outputs.sarif-output }}
+        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
       run: |
         ls
         ls ./results
@@ -59,5 +60,5 @@ runs:
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
-        sarif_file: ${{ steps.run-codeql-analysis.outputs.sarif-output }}
+        sarif_file: ${{ steps.codeql-analysis.outputs.sarif-output }}
         category: my-analysis-tool
