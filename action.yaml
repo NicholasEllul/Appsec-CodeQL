@@ -28,7 +28,15 @@ runs:
       with:
           repository: 'NicholasEllul/Appsec-CodeQL'
           path: ${{ env.APPSEC_CODEQL_DIR }}
-          
+
+    - name: List where user is
+      run: pwd
+      shell: bash 
+
+    - name: List dirs
+      run: ls -lia
+      shell: bash 
+      
     - name: Enter appsec codeql directory
       run: cd ${{ env.APPSEC_CODEQL_DIR }}
       shell: bash 
