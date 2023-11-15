@@ -36,6 +36,7 @@ runs:
       env:
         INPUT_PATHS_IGNORED: ${{ inputs.paths_ignored }}
         REPO: ${{inputs.repo}}
+        QUERIES: '[{ "name": "Juiceshop qls pack", "uses": "./qls-packs/juiceshop.qls"}]'
 
     - name: List where user is
       run: pwd
@@ -44,7 +45,6 @@ runs:
     - name: List dirs
       run: cd ${{ github.workspace }}/appsec-codeql && ls -lia && cd qls-packs && ls
       shell: bash 
-
     
     - name: Print CodeQL Config
       run: cat ${{ github.workspace }}/appsec-codeql/codeql-config.yml
